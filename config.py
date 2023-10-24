@@ -436,5 +436,5 @@ c.colors.tabs.selected.even.fg ='black'
 config.bind('<Ctrl-p>', 'mode-enter passthrough')
 
 
-#testing..
-config.bind('<Ctrl-0>','spawn -u -v "updateConfig.bat"')
+#aliases
+c.aliases['config-update'] = 'spawn -u -v "updateConfig.bat"'
