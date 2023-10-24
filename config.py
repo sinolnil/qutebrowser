@@ -437,4 +437,4 @@ config.bind('<Ctrl-p>', 'mode-enter passthrough')
 
 
 #testing..
-config.bind('<Ctrl-0>','spawn -u -o -v "updateConfig.bat"')
+config.bind('<Ctrl-0>','spawn -u "updateConfig.bat"')
