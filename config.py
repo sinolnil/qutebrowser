@@ -354,6 +354,7 @@ whoami = os.getlogin()
 homePage = ''
 command = ''
 editor = ''
+updateBin = ''
 
 if platform == "linux" or platform == "linux2":
     pass
@@ -362,11 +363,13 @@ elif platform == "darwin":
     homePage = "/Users/{}/.qutebrowser/html/index.html".format(whoami)
     command = 'Meta'
     editor = '/usr/local/bin/mvim'
+    updateBin = ''
 
 elif platform == "win32":
     homePage = "C:\\Users\\{}\\AppData\\Roaming\\qutebrowser\\config\\html\\index.html".format(whoami)
     command = 'Ctrl'
     editor = 'gvim'
+    updateBin = 'updateConfig.bat'
 
 #default page
 c.url.default_page = homePage
@@ -436,5 +439,5 @@ c.colors.tabs.selected.even.fg ='black'
 config.bind('<Ctrl-p>', 'mode-enter passthrough')
 
 
-#aliases
-c.aliases['config-update'] = 'spawn -u -v "updateConfig.bat"'
+#testing..
+c.aliases['config-update'] = 'spawn -u -v {}'.format(updateBin)
