@@ -354,7 +354,6 @@ WHOAMI = os.environ.get("USER") if os.environ.get("USER")!=None else os.environ.
 homePage = ''
 modKey = '' # modifier key
 editor = ''
-updateBin = 'updateConfig'
 
 if platform == "linux" or platform == "linux2":
     pass
@@ -363,13 +362,11 @@ elif platform == "darwin":
     homePage = f"/Users/{WHOAMI}/.qutebrowser/html/index.html"
     modKey = 'Meta'
     editor = '/usr/local/bin/mvim'
-    updateBin = ''
 
 elif platform == "win32":
     homePage = f"C:\\Users\\{WHOAMI}\\AppData\\Roaming\\qutebrowser\\config\\html\\index.html"
     modKey = 'Ctrl'
     editor = 'gvim'
-    updateBin = updateBin + '.bat'
 
 #default page
 c.url.default_page = homePage
@@ -440,4 +437,5 @@ config.bind('<Ctrl-p>', 'mode-enter passthrough')
 
 
 #aliases
-c.aliases['config-update'] = f'spawn -u -v {updateBin}'
+c.aliases['config-update'] = f"spawn -u -v {updateConfig if platform == 'darwin' else updateConfig.bat}"
+c.aliases['config-open']   = f"spawn -u {openConfig if platform == 'darwin' else openConfig.bat}"
