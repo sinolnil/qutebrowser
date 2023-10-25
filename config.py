@@ -350,33 +350,33 @@ c.fonts.web.family.fixed = None
 c.tabs.show = 'never'
 
 #-----OS configuration-----
-whoami = os.getlogin()
+whoami = os.environ.get("USER")
 homePage = ''
 command = ''
 editor = ''
-updateBin = ''
+updateBin = 'updateConfig'
 
 if platform == "linux" or platform == "linux2":
     pass
 elif platform == "darwin":
     # OS X
-    homePage = "/Users/{}/.qutebrowser/html/index.html".format(whoami)
+    homePage = f"/Users/{whoami}/.qutebrowser/html/index.html"
     command = 'Meta'
     editor = '/usr/local/bin/mvim'
     updateBin = ''
 
 elif platform == "win32":
-    homePage = "C:\\Users\\{}\\AppData\\Roaming\\qutebrowser\\config\\html\\index.html".format(whoami)
+    homePage = f"C:\\Users\\{whoami}\\AppData\\Roaming\\qutebrowser\\config\\html\\index.html"
     command = 'Ctrl'
     editor = 'gvim'
-    updateBin = 'updateConfig.bat'
+    updateBin = updateBin + 'bat'
 
 #default page
 c.url.default_page = homePage
 c.url.start_pages = homePage
 
 #editor
-c.editor.command =["{}".format(editor), "-f", "{file}", "-c", "normal {line}G{column0}l"]
+c.editor.command =[f"{editor}", "-f", "{file}", "-c", "normal {line}G{column0}l"]
 
 
 # Bindings for normal mode
@@ -389,10 +389,10 @@ config.unbind('m')
 
 #config.bind('<Meta-t>', 'open -t')
 config.bind('<Shift-x>','undo')
-config.bind('<{}-l>'.format(command), 'cmd-set-text -s :open')
-config.bind('<{}-t>'.format(command), 'open -t')
-config.bind('<{}-w>'.format(command), 'tab-close')
-config.bind('<{}-r>'.format(command), 'reload')
+config.bind(f'<{command}-l>', 'cmd-set-text -s :open')
+config.bind(f'<{command}-t>', 'open -t')
+config.bind(f'<{command}-w>', 'tab-close')
+config.bind(f'<{command}-r>', 'reload')
 config.bind('<Ctrl-[>', 'jseval -q document.activeElement.blur()')
 config.bind('d', 'scroll-page 0 0.5')
 config.bind('u', 'scroll-page 0 -0.5') 
@@ -410,15 +410,15 @@ config.bind("'2", 'jump-mark 2')
 config.bind("'3", 'jump-mark 3')
 
 #select tabs
-config.bind('<{}-1>'.format(command), 'tab-select 1')
-config.bind('<{}-2>'.format(command), 'tab-select 2')
-config.bind('<{}-3>'.format(command), 'tab-select 3')
-config.bind('<{}-4>'.format(command), 'tab-select 4')
-config.bind('<{}-5>'.format(command), 'tab-select 5')
-config.bind('<{}-6>'.format(command), 'tab-select 6')
-config.bind('<{}-7>'.format(command), 'tab-select 7')
-config.bind('<{}-8>'.format(command), 'tab-select 8')
-config.bind('<{}-9>'.format(command), 'tab-select 9')
+config.bind(f'<{command}-1>', 'tab-select 1')
+config.bind(f'<{command}-2>', 'tab-select 2')
+config.bind(f'<{command}-3>', 'tab-select 3')
+config.bind(f'<{command}-4>', 'tab-select 4')
+config.bind(f'<{command}-5>', 'tab-select 5')
+config.bind(f'<{command}-6>', 'tab-select 6')
+config.bind(f'<{command}-7>', 'tab-select 7')
+config.bind(f'<{command}-8>', 'tab-select 8')
+config.bind(f'<{command}-9>', 'tab-select 9')
 
 #-----color config-----
 #statusbar
@@ -440,4 +440,4 @@ config.bind('<Ctrl-p>', 'mode-enter passthrough')
 
 
 #testing..
-c.aliases['config-update'] = 'spawn -u -v {}'.format(updateBin)
+c.aliases['config-update'] = f'spawn -u -v {updateBin}'
