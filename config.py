@@ -350,7 +350,7 @@ c.fonts.web.family.fixed = None
 c.tabs.show = 'never'
 
 #-----OS configuration-----
-whoami = os.environ.get("USER")
+WHOAMI = os.environ.get("USER") if os.environ.get("USER")!=None else os.environ.get("USERNAME")
 homePage = ''
 modKey = '' # modifier key
 editor = ''
@@ -360,13 +360,13 @@ if platform == "linux" or platform == "linux2":
     pass
 elif platform == "darwin":
     # OS X
-    homePage = f"/Users/{whoami}/.qutebrowser/html/index.html"
+    homePage = f"/Users/{WHOAMI}/.qutebrowser/html/index.html"
     modKey = 'Meta'
     editor = '/usr/local/bin/mvim'
     updateBin = ''
 
 elif platform == "win32":
-    homePage = f"C:\\Users\\{whoami}\\AppData\\Roaming\\qutebrowser\\config\\html\\index.html"
+    homePage = f"C:\\Users\\{WHOAMI}\\AppData\\Roaming\\qutebrowser\\config\\html\\index.html"
     modKey = 'Ctrl'
     editor = 'gvim'
     updateBin = updateBin + '.bat'
