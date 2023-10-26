@@ -34,7 +34,6 @@ def win32Install():
 	except Exception as e:
 		print(e)
 	updateConfig = (f"@echo on\n"
-				"echo 'Downloading script from github...'\n"
 				f"curl {REPO} -o {win32Path}/config.py --ssl-no-revoke")
 
 	openConfig = (f"@echo on\n"
