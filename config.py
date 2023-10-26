@@ -437,5 +437,5 @@ config.bind('<Ctrl-p>', 'mode-enter passthrough')
 
 
 #aliases
-c.aliases['config-update'] = f"spawn -u -v {updateConfig if platform == 'darwin' else updateConfig.bat}"
-c.aliases['config-open']   = f"spawn -u {openConfig if platform == 'darwin' else openConfig.bat}"
+c.aliases['config-update'] = f"spawn -u -v {'updateConfig' if platform == 'darwin' else 'updateConfig.bat'}"
+c.aliases['config-open']   = f"spawn -u {'openConfig' if platform == 'darwin' else 'openConfig.bat'}"
