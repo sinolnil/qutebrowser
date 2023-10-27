@@ -27,15 +27,15 @@ def writeFile(path,fileName,script,mode="w+"):
 
 def darwinInstall():
     path = os.path.join(macPath,'userscripts')
-    updateConfig = (f"curl {REPO} -o ../config.py")
+    updateConfig = (f"curl {REPO} -o {os.path.join(macPath,'config.py')}")
     writeFile(path,'updateConfig',updateConfig)
 
     #execute updateConfig
     try:
-        #change the permission
-        f = "updateConfig"
-        os.chmod(f"./{f}",0o777)
-        os.system(f"./{f}") 
+        #change file the permission
+        f = os.path.join(path,'updateConfig')
+        os.chmod(f,0o777)
+        os.system(f) 
     except Exception as e:
         print(e)
 
