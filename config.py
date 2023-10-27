@@ -351,7 +351,7 @@ c.tabs.show = 'never'
 
 #-----OS configuration-----
 WHOAMI = os.environ.get("USER") if os.environ.get("USER")!=None else os.environ.get("USERNAME")
-homePage = ''
+homePage = 'about:blank'
 modKey = '' # modifier key
 editor = ''
 
@@ -359,12 +359,12 @@ if platform == "linux" or platform == "linux2":
     pass
 elif platform == "darwin":
     # OS X
-    homePage = f"/Users/{WHOAMI}/.qutebrowser/html/index.html"
+    #homePage = f"/Users/{WHOAMI}/.qutebrowser/html/index.html"
     modKey = 'Meta'
     editor = '/usr/local/bin/mvim'
 
 elif platform == "win32":
-    homePage = f"C:\\Users\\{WHOAMI}\\AppData\\Roaming\\qutebrowser\\config\\html\\index.html"
+    #homePage = f"C:\\Users\\{WHOAMI}\\AppData\\Roaming\\qutebrowser\\config\\html\\index.html"
     modKey = 'Ctrl'
     editor = 'gvim'
 
